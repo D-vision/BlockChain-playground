@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Blockchain Dogovor24 Demo</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css">
+</head>
+<body>
+    <div id="app">
+       <div class="container">
+               <h3 v-text="head" @click="test"></h3>
+           <div class="row" v-if="blocks">
+               <div class="col-xs-6 col-md-12">
+                   <div class="thumbnail col-md-3" v-for="block in blocks" style="margin-left:3%;">
+                       <div class="caption">
+                           <ul class="list-group">
+                               <li class="list-group-item">
+                                   Index:<span v-text="block.index"></span>
+                               </li>
+                               <li class="list-group-item">
+                                   Data:<span v-text="block.data"></span>
+                               </li>
+                               <li class="list-group-item" style="word-break: break-all;">
+                                   Hash:<span v-text="block.hash"></span>
+                               </li>
+                               <li class="list-group-item" style="word-break: break-all;">
+                                   Previous Hash:<span v-text="block.previousHash"></span>
+                               </li>
+                               <li class="list-group-item">
+                                   Timestamp:<span v-text="block.timestamp"></span>
+                               </li>
+                           </ul>
+                       </div>
+                   </div>
+               </div>
+           </div>
+       </div>
+    </div>
+    <script src="app.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

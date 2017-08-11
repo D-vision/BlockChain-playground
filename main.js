@@ -3,6 +3,7 @@ var CryptoJS = require("crypto-js");
 var express = require("express");
 var bodyParser = require('body-parser');
 var WebSocket = require("ws");
+var path    = require("path");
 
 var http_port = process.env.HTTP_PORT || 3001;
 var p2p_port = process.env.P2P_PORT || 6001;
@@ -34,6 +35,11 @@ var blockchain = [getGenesisBlock()];
 var initHttpServer = () => {
     var app = express();
     app.use(bodyParser.json());
+
+    app.get('/', (req,res)=> {
+        app.use(express.static(path.join(__dirname), 'js'));
+        res.sendFile(path.join(__dirname + '/index.html'));
+    });
 
     app.get('/blocks', (req, res) => res.send(JSON.stringify(blockchain)));
     app.post('/mineBlock', (req, res) => {
